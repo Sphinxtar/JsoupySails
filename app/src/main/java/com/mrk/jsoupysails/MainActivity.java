@@ -104,19 +104,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestPermissions() {
         MainActivity activity = this;
-        if (activity != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                activity.getRequestMultiplePermissionsLauncher().launch(new String[]{
-                        Manifest.permission.NEARBY_WIFI_DEVICES,
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                });
-            }
-            else
-            {
-                activity.getRequestMultiplePermissionsLauncher().launch(new String[]{
-                        Manifest.permission.ACCESS_FINE_LOCATION
-                });
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            activity.getRequestMultiplePermissionsLauncher().launch(new String[]{
+                    Manifest.permission.NEARBY_WIFI_DEVICES,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            });
+        } else {
+            activity.getRequestMultiplePermissionsLauncher().launch(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            });
         }
     }
 
